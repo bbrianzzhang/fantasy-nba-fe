@@ -7,9 +7,10 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
 import { Calendar } from '@/components/ui/calendar';
-import Header from "./header";
+import Header from "../header";
+import WeekSelector from "./weekSelector";
 
-export default function Home() {
+export default function Schedule() {
   const [selectionType, setSelectionType] = useState('week');
   const [selectedWeek, setSelectedWeek] = useState('1');
   const [date, setDate] = useState<Date>();
@@ -18,17 +19,18 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Header/>
-      <div className="flex items-center justify-center bg-background p-4">
-        <Card className="w-full max-w-md">
-          <CardContent className="pt-6">
-            <div className="text-center space-y-6">
-              <h1 className="text-3xl font-bold">Fantasy Basketball</h1>
-              <p>Improve your fantasy basketball team with our stats explorer and other tools!</p>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
+      <Header />
+      <main className="container mx-auto p-8">
+        <h1 className="text-4xl font-bold mb-8">Fantasy Basketball Stats</h1>
+          <div className="flex">
+          <WeekSelector/>
+          <Card className="max-w-md">
+            <CardContent>
+              Select a week to get started, or use the date selector to pick a range of dates!
+            </CardContent>
+          </Card>
+          </div>
+      </main>
     </div>
   );
 }
